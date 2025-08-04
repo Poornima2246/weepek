@@ -1,0 +1,40 @@
+.hero-section {
+    /* background: linear-gradient(50deg, #845ec2, #d65db1 ,#ff6f91 , #ff9671 , #ffc75f ,#f9f871); */
+    /* background: linear-gradient(50deg,#030048 , #5c3a99, #e1b4ff , #0b0051 , #845ec2); */
+
+    background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    background-size:200% 200%;
+    animation: gradientAnimation 10s ease-in-out infinite;
+}
+
+.section-bg {
+    background: linear-gradient(to left, #0b0e14, #0036a3);
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+.card-bg{
+    background-image: linear-gradient(50deg , #8B45F7 , #1B0F56 ) 
+        /* background-image: linear-gradient(50deg , #05657D , #0A1B3E )  */
+
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  padding: 10px;
+}
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
