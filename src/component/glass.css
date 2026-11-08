@@ -1,0 +1,287 @@
+/* =========================================================
+   GLASS BACKGROUND — WIDE RIBS + FULL-PANEL GLOSS
+   ========================================================= */
+
+/* .glass-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: #08030f;
+  pointer-events: none;
+} */
+
+
+.glass-background {
+  background: linear-gradient(
+    135deg,
+    #0a0418 0%,
+    #0e0620 50%,
+    #07030f 100%
+  );
+}
+/* =========================================================
+   1. BASE PURPLE / PINK ATMOSPHERIC LIGHTING
+   ========================================================= */
+
+.glass-bg-light {
+  position: absolute;
+  inset: -5%;
+
+  background:
+    radial-gradient(
+      ellipse at 18% 18%,
+      rgba(255, 175, 255, 0.95) 0%,
+      rgba(235, 125, 255, 0.78) 15%,
+      rgba(185, 75, 255, 0.45) 32%,
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse at 42% 38%,
+      rgba(155, 65, 255, 0.55) 0%,
+      rgba(100, 35, 180, 0.25) 30%,
+      transparent 55%
+    ),
+    linear-gradient(
+      100deg,
+      #e9a0ff 0%,
+      #b65aff 24%,
+      #6724a0 48%,
+      #241034 70%,
+      #07040f 100%
+    );
+
+  filter: blur(14px);
+  transform: scale(1.03);
+}
+
+/* =========================================================
+   2. WIDE VERTICAL GLASS RIBS
+   ========================================================= */
+
+.glass-ribs {
+  position: absolute;
+  inset: 0;
+
+  background:
+    /* Broad translucent colour variations per panel */
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 225, 255, 0.12) 0px,
+      rgba(255, 200, 255, 0.20) 10px,
+      rgba(255, 220, 255, 0.12) 24px,
+      rgba(195, 120, 255, 0.06) 38px,
+      rgba(100, 40, 155, 0.12) 55px,
+      rgba(25, 5, 40, 0.30) 70px,
+      rgba(255, 210, 255, 0.12) 84px,
+      rgba(255, 255, 255, 0.25) 88px,
+      transparent 90px
+    ),
+
+    /* Vertical depth and shadow inside the glass panels */
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.10) 0px,
+      rgba(255, 190, 255, 0.06) 8px,
+      transparent 22px,
+      rgba(20, 4, 35, 0.12) 42px,
+      rgba(8, 2, 18, 0.38) 67px,
+      rgba(255, 215, 255, 0.06) 82px,
+      transparent 90px
+    );
+
+  background-size:
+    90px 100%,
+    90px 100%;
+
+  box-shadow:
+    inset 0 0 60px rgba(0, 0, 0, 0.20);
+}
+
+/* =========================================================
+   3. FULL-PANEL GLOSSY REFLECTIONS
+   ========================================================= */
+
+.glass-reflection {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    /* Main pink highlight */
+    radial-gradient(
+      ellipse at 18% 20%,
+      rgba(255, 225, 255, 0.82) 0%,
+      rgba(255, 180, 255, 0.48) 20%,
+      rgba(255, 145, 255, 0.18) 40%,
+      transparent 58%
+    ),
+
+    /* Soft purple reflection */
+    radial-gradient(
+      ellipse at 42% 42%,
+      rgba(205, 145, 255, 0.38) 0%,
+      rgba(165, 90, 255, 0.20) 30%,
+      transparent 55%
+    ),
+
+    /* Wide glossy reflection across every glass rib */
+    repeating-linear-gradient(
+      90deg,
+
+      rgba(255, 255, 255, 0.05) 0px,
+
+      rgba(255, 230, 255, 0.14) 8px,
+
+      rgba(255, 245, 255, 0.24) 18px,
+
+      rgba(255, 220, 255, 0.16) 28px,
+
+      rgba(235, 190, 255, 0.08) 40px,
+
+      rgba(255, 255, 255, 0.02) 50px,
+
+      rgba(35, 8, 55, 0.12) 65px,
+
+      rgba(255, 220, 255, 0.10) 78px,
+
+      rgba(255, 255, 255, 0.30) 86px,
+
+      rgba(255, 255, 255, 0.12) 88px,
+
+      transparent 90px
+    ),
+
+    /* Vertical surface illumination */
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 220, 255, 0.06) 20%,
+      transparent 48%,
+      rgba(30, 5, 45, 0.12) 75%,
+      rgba(5, 0, 15, 0.30) 100%
+    );
+
+  background-size:
+    auto,
+    auto,
+    90px 100%,
+    auto;
+
+  mix-blend-mode: screen;
+  opacity: 0.95;
+}
+
+/* =========================================================
+   4. FINE SPECULAR HIGHLIGHTS
+   ========================================================= */
+
+.glass-specular {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    /* Soft bright lines blended into each panel */
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 15px,
+      rgba(255, 225, 255, 0.05) 20px,
+      rgba(255, 245, 255, 0.18) 25px,
+      rgba(255, 255, 255, 0.30) 27px,
+      rgba(255, 220, 255, 0.12) 30px,
+      transparent 36px,
+      transparent 90px
+    );
+
+  background-size: 90px 100%;
+
+  mix-blend-mode: screen;
+  opacity: 0.8;
+}
+
+/* =========================================================
+   5. CINEMATIC DARK RIGHT SIDE
+   ========================================================= */
+
+.glass-vignette {
+  position: absolute;
+  inset: 0;
+
+  background:
+    /* Preserve the dark right side */
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(10, 3, 22, 0.04) 32%,
+      rgba(9, 3, 20, 0.20) 52%,
+      rgba(6, 2, 15, 0.62) 76%,
+      rgba(3, 1, 9, 0.94) 100%
+    ),
+
+    /* Top and bottom depth */
+    linear-gradient(
+      180deg,
+      rgba(5, 1, 15, 0.10) 0%,
+      transparent 25%,
+      transparent 65%,
+      rgba(4, 1, 12, 0.48) 100%
+    );
+}
+
+/* =========================================================
+   6. FINE GLASS GRAIN
+   ========================================================= */
+
+.glass-grain {
+  position: absolute;
+  inset: 0;
+
+  opacity: 0.12;
+
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+
+  background-size: 180px 180px;
+
+  mix-blend-mode: soft-light;
+}
+
+/* =========================================================
+   7. RESPONSIVE ADJUSTMENTS
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .glass-ribs {
+    background-size:
+      65px 100%,
+      65px 100%;
+  }
+
+  .glass-reflection {
+    background-size:
+      auto,
+      auto,
+      65px 100%,
+      auto;
+  }
+
+  .glass-specular {
+    background-size: 65px 100%;
+  }
+
+  .glass-bg-light {
+    filter: blur(10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-background,
+  .glass-ribs,
+  .glass-reflection,
+  .glass-specular {
+    animation: none !important;
+    transition: none !important;
+  }
+}

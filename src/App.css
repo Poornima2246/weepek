@@ -1,0 +1,200 @@
+
+/* Hide scrollbar but keep scrolling working */
+html {
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* IE / Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none;                  /* Chrome, Safari, Opera */
+}
+
+/* Extra safety for body / root */
+body {
+  overflow-x: hidden;             /* horizontal scrollbar completely remove */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* If your scroll is happening on .app-container or .app-content */
+.app-container,
+.app-content {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.app-container::-webkit-scrollbar,
+.app-content::-webkit-scrollbar {
+  display: none;
+}
+
+
+.app-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  isolation: isolate;
+  background: transparent;
+}
+
+/* Shader gradient background */
+.app-container > :first-child {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Film grain overlay */
+.grain-overlay {
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+    z-index: 1;   
+  pointer-events: none;
+
+  opacity: 4.4;
+
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
+
+  background-size: 180px 180px;
+  mix-blend-mode: soft-light;
+
+  animation: grain-shift 0.25s steps(3) infinite;
+}
+
+/* Keep the content above the grain */
+.app-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Subtle cinematic movement */
+@keyframes grain-shift {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(-2%, 1%);
+  }
+
+  50% {
+    transform: translate(1%, -2%);
+  }
+
+  75% {
+    transform: translate(2%, 1%);
+  }
+
+  100% {
+    transform: translate(-1%, 2%);
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .grain-overlay {
+    animation: none;
+  }
+}
+
+/* ==========================================
+   WEEPEK — VISIBLE CINEMATIC FILM GRAIN
+========================================== */
+
+.project-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+
+  pointer-events: none;
+
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' seed='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+
+  background-size: 120px 120px;
+
+  /* IMPORTANT */
+  opacity: 0.55;
+  mix-blend-mode: soft-light;
+
+  animation: weepekGrain 0.15s steps(4) infinite;
+}
+
+@keyframes weepekGrain {
+  0% {
+    background-position: 0 0;
+  }
+
+  25% {
+    background-position: -40px 25px;
+  }
+
+  50% {
+    background-position: 30px -35px;
+  }
+
+  75% {
+    background-position: -25px -20px;
+  }
+
+  100% {
+    background-position: 40px 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-grain {
+    animation: none;
+  }
+}
+
+/* ==========================================
+   WEEPEK — Organic page transition overlay
+   Brand: orange #ed710c / background #0b0613
+========================================== */
+
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+
+  /* Above navbar, shader background and film grain */
+  z-index: 99999;
+
+  /* Inert when idle: invisible and never intercepts clicks/touch */
+  visibility: hidden;
+  pointer-events: none;
+  background: transparent;
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+/* Active only while the wipe is running */
+.page-transition.is-active {
+  visibility: visible;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.page-transition__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  shape-rendering: geometricPrecision;
+}
+
+/* Reduced motion: never show the wipe (App.jsx also skips it in JS) */
+@media (prefers-reduced-motion: reduce) {
+  .page-transition {
+    display: none !important;
+  }
+}

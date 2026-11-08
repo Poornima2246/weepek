@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+   
+}
+/* Add these styles to your global CSS file */
+.hero-section {
+  position: relative;
+  z-index: 10;
+}
+
+.about-section-wrapper {
+  position: relative;
+  z-index: 20;
+  margin-top: -2rem; /* Optional: Creates overlap effect */
+}
+
+.about-section {
+  min-height: 100vh;
+  transition: transform 0.3s ease-out;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optional: Add a subtle gradient overlay when card appears */
+.about-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Animation for card entrance */
+@keyframes cardSlideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Hover effects for contact items */
+.about-right .flex {
+  transition: transform 0.3s ease;
+}
+
+.about-right .flex:hover {
+  transform: translateX(10px);
+}
+
+
+/* font  */
+      @font-face {
+  font-family: "Gotuna";
+  src: url("./assets/fonts/gotuna-font/Gotuna.ttf") format("opentype");
+   }
+      
+   @font-face {
+  font-family: "Nomine";
+  src: url("./assets/fonts/nomine-font/Nomine.ttf") format("opentype");
+   }
+
+     @font-face {
+  font-family: "bolteItalic";
+  src: url("./assets/fonts/bolte-font-family/BolteDemoBoldItalic-JpqJK.ttf ") format("opentype");
+   }
+     @font-face {
+  font-family: "bolteSemiBold";
+  src: url("./assets/fonts/bolte-font-family/BolteDemoSemiBold-pg1ZD.otf") format("opentype");
+   }
+     @font-face {
+  font-family: "BolteDemoExtraBlack";
+  src: url("./assets/fonts/bolte-font-family/BolteDemoExtraBlack-e96ep.otf") format("opentype");
+   }
+
+     @font-face {
+  font-family: "Kynetic";
+  src: url("./assets/fonts/kynetic-font/KyneticDemo-BF6a334cf3da674.ttf") format("opentype");
+   }
+   
+     @font-face {
+  font-family: "NeueRegular";
+  src: url("./assets/fonts/Neue/NeueMontreal-Regular.otf") format("opentype");
+   }
+
+      @font-face {
+  font-family: "NeueItalic";
+  src: url("./assets/fonts/Neue/NeueMontreal-MediumItalic.otf") format("opentype");
+   }
+
+      @font-face {
+  font-family: "Thrust";
+  src: url("./assets/fonts/thrust-font/Thrust.ttf") format("opentype");
+   }
+        @font-face {
+  font-family: "Print";
+  src: url("./assets/fonts/imprint-font/Imprint-BF6ae8a00d70a1b.ttf") format("opentype");
+   }
