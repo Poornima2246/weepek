@@ -18,6 +18,8 @@ import Contact from './component/Contact'
 import ShaderBackground from "./component/ShaderBackground";
 import Worksdetail from './component/Worksdetails.jsx';
 import ServiceDetails from "./component/Servicedetailpage";
+import Preloader from "./component/Preloder.jsx";
+
 
  
 
