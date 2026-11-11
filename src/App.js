@@ -541,7 +541,7 @@ useEffect(() => {
         </svg>
       </div>
             <Contact/>
-
+  <Preloader />
     </>
   );
 }
